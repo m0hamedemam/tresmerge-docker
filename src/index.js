@@ -69,9 +69,9 @@ app.get('/data', async (req, res) => {
     const products = await redisClient.get('products');
     console.log('Redis key "products" value:', products);
     if (products) {
-      res.send(`<h1>Hello Tresmerge FROM AWS </h1> <h2>${products}</h2>`);
+      res.send(`<h1>Hello Tresmerge FROM AWS using docker hub </h1> <h2>${products}</h2>`);
     } else {
-      res.send('<h1>Hello Tresmerge FROM AWS </h1> <h2>No products found</h2>');
+      res.send('<h1>Hello Tresmerge FROM AWS using docker hub </h1> <h2>No products found</h2>');
     }
   } catch (err) {
     console.error('Redis get error:', err);
