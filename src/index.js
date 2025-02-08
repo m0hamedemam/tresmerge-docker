@@ -29,6 +29,8 @@ redisClient.on('connect', () => console.log('Connected to Redis...'));
 })();
 
 // PostgreSQL connection
+
+
 const pgClient = new Client({
   user: process.env.DB_USER || 'root',
   host: process.env.DB_HOST || 'postgres',
@@ -55,7 +57,7 @@ app.get('/', async (req, res) => {
   try {
     await redisClient.set('products', 'products...');
     console.log('Redis key "products" set successfully');
-    res.send('<h1>Hello Tresmerge Hassan!</h1>');
+    res.send('<h1>Hello Tresmerge FROM AWS</h1>');
   } catch (err) {
     console.error('Redis set error:', err);
     res.status(500).send('<h1>Internal Server Error</h1>');
@@ -67,9 +69,9 @@ app.get('/data', async (req, res) => {
     const products = await redisClient.get('products');
     console.log('Redis key "products" value:', products);
     if (products) {
-      res.send(`<h1>Hello Tresmerge Hassan!</h1> <h2>${products}</h2>`);
+      res.send(`<h1>Hello Tresmerge FROM AWS </h1> <h2>${products}</h2>`);
     } else {
-      res.send('<h1>Hello Tresmerge Hassan!</h1> <h2>No products found</h2>');
+      res.send('<h1>Hello Tresmerge FROM AWS </h1> <h2>No products found</h2>');
     }
   } catch (err) {
     console.error('Redis get error:', err);
