@@ -1,4 +1,4 @@
-version: "3"
+
 services:
   node-app:
     build:
@@ -6,4 +6,3 @@ services:
       target: production
     environment:
       - NODE_ENV=production
-    command: npm start

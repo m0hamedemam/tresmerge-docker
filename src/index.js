@@ -3,6 +3,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const { Client } = require('pg');
 const redis = require('redis');
+const os = require('os');
 
 // Init app
 const PORT = process.env.PORT || 3001;
@@ -57,6 +58,7 @@ app.get('/', async (req, res) => {
   try {
     await redisClient.set('products', 'products...');
     console.log('Redis key "products" set successfully');
+    console.log(`Traffic from ${os.hostname()}`);
     res.send('<h1>Hello Tresmerge FROM AWS</h1>');
   } catch (err) {
     console.error('Redis set error:', err);
